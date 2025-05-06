@@ -103,7 +103,7 @@ This Lua script monitors the current drawn by the ESC (Electronic Speed Controll
 
 
 
-2,# ArduPilot Obstacle Avoidance Script (Front LiDAR)
+# 2,ArduPilot Obstacle Avoidance Script (Front LiDAR)
 
 ## Overview
 
