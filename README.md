@@ -1,4 +1,4 @@
-# 1,High Current Monitoring Script for Drones
+# 1,High Current Monitoring Script for Drones - hightcurrent.lua
 
 This Lua script monitors the current drawn by the ESC (Electronic Speed Controller) of your drone. If the current exceeds the predefined threshold, it will send a critical warning message to the Ground Control Station (GCS).
 
@@ -103,7 +103,7 @@ This Lua script monitors the current drawn by the ESC (Electronic Speed Controll
 
 
 
-# 2,ArduPilot Obstacle Avoidance Script (Front LiDAR)
+# 2,ArduPilot Obstacle Avoidance Script (Front LiDAR) - obstacle_test.lua
 
 ## Overview
 
