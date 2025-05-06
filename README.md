@@ -158,6 +158,67 @@ Once the script is loaded and running, it will automatically monitor the front r
 Dhinoj DS
 
 
+# 3,ArduPilot Script: Auto Mode → 90° Left → Fly 200m
+
+## Overview
+
+This Lua script for ArduPilot-based autonomous vehicles automates a specific flight maneuver. When the vehicle is armed and the flight mode is switched to `AUTO`, the script will:
+
+1.  Determine the vehicle's initial heading.
+2.  Calculate a waypoint 200 meters to the left of this initial heading.
+3.  Create a simple mission containing this single waypoint at an altitude of 20 meters (relative to home).
+4.  Initiate the mission, causing the vehicle to turn 90 degrees left and fly 200 meters straight.
+
+## Features
+
+* **Automated Trigger:** The maneuver is triggered automatically when the flight mode is set to `AUTO` after arming.
+* **Relative Calculation:** The target waypoint is calculated relative to the vehicle's initial position and heading at the moment of mode switch.
+* **Single Waypoint Mission:** Creates a simple mission with a single waypoint for the desired flight path.
+* **Altitude Control:** Sets the target altitude for the mission to 20 meters.
+* **GCS Feedback:** Sends informative messages to the Ground Control Station (GCS) about the script's actions and the calculated waypoint.
+
+## Configuration
+
+There are no user-configurable parameters within the script itself. The behavior is hardcoded as a 90-degree left turn and a 200-meter flight distance at 20 meters altitude. To modify these values, you would need to edit the script directly:
+
+* **Turn Angle:** Change `- 90` on the line `local target_heading = (current_heading - 90) % 360` to a different value for a different turn angle (positive for right turn).
+* **Flight Distance:** Modify `local distance = 200.0` to the desired flight distance in meters.
+* **Target Altitude:** Change `local alt = 20` to the desired altitude in meters.
+
+## Installation
+
+1.  **Save the script:** Save the Lua script (e.g., `auto_left_200m.lua`) to the appropriate scripts directory on your ArduPilot flight controller's SD card (usually `APM/lua/`).
+2.  **Enable Lua Scripting:** Ensure that Lua scripting is enabled in your ArduPilot parameters by setting `LUA_ENABLED` to `1`.
+3.  **Reboot Flight Controller:** Reboot your ArduPilot flight controller for the script to be loaded.
+
+## Usage
+
+1.  **Arm your vehicle.**
+2.  **Switch the flight mode to `AUTO`.**
+
+    Upon entering `AUTO` mode for the first time after arming, the script will:
+    * Determine the current GPS location and heading.
+    * Calculate the target waypoint.
+    * Load a mission with this single waypoint.
+    * Start the mission after a 1-second delay.
+
+The vehicle will then turn 90 degrees to the left and fly 200 meters in that direction at an altitude of 20 meters.
+
+## Important Considerations
+
+* **GPS Lock:** This script relies on a good GPS lock to determine the initial position and calculate the target waypoint. Ensure you have a strong GPS signal before arming and switching to `AUTO` mode.
+* **Compass Calibration:** Accurate compass calibration is crucial for the correct heading determination and the resulting left turn.
+* **Altitude Reference:** The target altitude of 20 meters is relative to the home altitude set when the vehicle was armed.
+* **Single Execution:** The script is designed to execute its actions only once after arming and entering `AUTO` mode. To run the sequence again, you would need to disarm and re-arm the vehicle.
+* **Safety:** Always ensure a safe environment for testing autonomous flight. Be ready to take manual control if necessary.
+
+## Author
+
+Gokul Krishna & Dhinoj DS
+
+
+
+
 
 ---
 
